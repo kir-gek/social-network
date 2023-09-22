@@ -1,6 +1,8 @@
+import s from './Profile.module.css';
+
 const Profile = () => {
     return (
-        <div className='content'>
+        <div className={s.content}>
         <img src='https://yahont-hotel.ru/ckeditor_images/maxresdefault.jpg' />
         <div>
           Ava + description
@@ -11,8 +13,8 @@ const Profile = () => {
             New post
           </div>
           <div>
-            <div>Post1</div>
-            <div>Post2</div>
+            <div className={s.item}>Post1</div>
+            <div className={s.item}>Post2</div>
           </div>
         </div>
       </div>
