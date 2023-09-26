@@ -2,7 +2,7 @@
   color: greenyellow;
 }
 
-.item img{
-  max-width: 50px;  
-  border-radius: 15px;
+.avatar{
+  max-width: 50px;
+  border-radius: 50%;
 }
