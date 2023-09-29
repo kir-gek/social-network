@@ -1,16 +1,14 @@
 import MyPosts from './MyPosts/MyPosts';
 import s from './Profile.module.css';
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = () => {
-  return (
-    <div>
-      <img src='https://yahont-hotel.ru/ckeditor_images/maxresdefault.jpg' />
-      <div>
-        Ava + description
-      </div>
-      <MyPosts />
-    </div>
-  )
+    return (
+        <div>
+            <ProfileInfo/>
+            <MyPosts/>
+        </div>
+    )
 }
 
 export default Profile;

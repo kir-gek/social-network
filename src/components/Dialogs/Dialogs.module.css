@@ -8,10 +8,11 @@
 }
 
 .dialogsItems .dialog {
-
+text-decoration: none;
 }
 
 .dialogsItems .active {
+    text-decoration: none;
     color: gold;
 }
 
