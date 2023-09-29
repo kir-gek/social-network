@@ -1,14 +1,27 @@
 import s from './Navbar.module.css';
+import {NavLink} from "react-router-dom";
 
-// console.log(s);
+const SelectedLink = ({isActive}) => isActive ? s.activeLink : s.item;
+// Она имеет класс activeLink если isActive, иначе класс item
+
 const Navbar = () => {
     return (
         <nav className={s.nav}>
-            <div> <a href='/profile' className={s.item}>Profile</a> </div>
-            <div> <a href='/dialogs' className={`${s.item} ${s.active}`}>Message</a> </div>
-            <div> <a className={s.item}>News</a> </div>
-            <div> <a className={s.item}>Music</a> </div>
-            <div> <a className={s.item}>Settings</a> </div>
+            <div>
+                <NavLink to="/profile" className={SelectedLink}> Profile </NavLink>
+            </div>
+            <div>
+                <NavLink to="/dialogs" className={SelectedLink}>Message</NavLink>
+            </div>
+            <div>
+                <NavLink to="/news" className={SelectedLink}>News</NavLink>
+            </div>
+            <div>
+               <NavLink to="/music" className={SelectedLink}>Music</NavLink>
+            </div>
+            <div>
+                <NavLink to="/settings" className={SelectedLink}>Settings</NavLink>
+            </div>
         </nav>
     )
 }
