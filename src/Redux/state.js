@@ -20,8 +20,8 @@ let state = {
         posts: [
             {id: 1, message: 'Hey, how are you?', likeCount: 2},
             {id: 2, message: "It's my first post", likeCount: 13},
-            {id: 2, message: "It's my first post", likeCount: 13},
-            {id: 2, message: "It's my first post", likeCount: 13}
+            {id: 3, message: "It's my first post", likeCount: 13},
+            {id: 4, message: "It's my first post", likeCount: 13}
         ]
     },
     navBar: {
@@ -41,4 +41,9 @@ let state = {
     }
 }
 
+export let addPost =(newPost) => {
+    state.profilePage.posts.push(
+        {id: 5, message: newPost, likeCount: 0}
+    );
+}
 export default state;
