@@ -23,6 +23,21 @@ let state = {
             {id: 2, message: "It's my first post", likeCount: 13},
             {id: 2, message: "It's my first post", likeCount: 13}
         ]
+    },
+    navBar: {
+        friends: [
+            {
+                id: 1,
+                imgURL: "https://bogatyr.club/uploads/posts/2023-02/thumbs/1677456604_bogatyr-club-p-avatarki-na-chernom-fone-foni-2.png",
+                name: 'Pasha'
+            },
+            {
+                id: 2,
+                imgURL: "https://png.pngtree.com/png-clipart/20230625/original/pngtree-cute-profile-pictures-png-image_9220720.png",
+                name: 'Masha'
+            },
+            {id: 3, imgURL: "https://cdn.freelance.ru/images/att/1324133_900_600.png", name: 'Marina'}
+        ]
     }
 }
 

@@ -1,7 +1,9 @@
 img {
     width: 100%;
 }
-
+.profileBack{
+    height: 200px;
+}
 .description{
     padding: 10px;
 }
