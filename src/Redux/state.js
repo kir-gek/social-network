@@ -22,7 +22,8 @@ let state = {
             {id: 2, message: "It's my first post", likeCount: 13},
             {id: 3, message: "It's my first post", likeCount: 13},
             {id: 4, message: "It's my first post", likeCount: 13}
-        ]
+        ],
+        newPostText: 'PP'
     },
     navBar: {
         friends: [
@@ -41,13 +42,17 @@ let state = {
     }
 }
 
-export let addPost = (newPost) => {
+export let addPost = () => {
     state.profilePage.posts.push(
-        {id: 5, message: newPost, likeCount: 0}
+        {id: 5, message: state.profilePage.newPostText, likeCount: 0}
     );
+    state.profilePage.newPostText = '';
     rerenderEntireTree(state);
 }
-
+export let addNewPostTXT = (newPostTXT) => {
+    state.profilePage.newPostText = newPostTXT;
+    rerenderEntireTree(state);
+}
 export let addMessage = (newMessage) => {
     state.dialogsPage.messages.push(
         {id: 3, message: newMessage}
