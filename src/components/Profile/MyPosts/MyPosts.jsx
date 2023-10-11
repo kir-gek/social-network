@@ -6,8 +6,12 @@ const MyPosts = (props) => {
 
     let postsElements = props.posts.map(p => (<Post message={p.message} likeCount={p.likeCount}/>))
 
-let newPostElement = React.createRef();
-    let addPost = () => { alert(newPostElement.current.value);}
+    let newPostElement = React.createRef();
+    let addPost = () => {
+        // alert(newPostElement.current.value);
+        props.addPost(newPostElement.current.value)
+        newPostElement.current.value=''
+    }
 
     return (
         <div className={s.myPosts}>
