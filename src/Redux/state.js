@@ -14,7 +14,8 @@ let state = {
             {id: 3, name: 'Marina'},
             {id: 4, name: 'John'},
             {id: 5, name: 'Bob'}
-        ]
+        ],
+        newMessageTXT: 'mm'
     },
     profilePage: {
         posts: [
@@ -57,6 +58,12 @@ export let addMessage = (newMessage) => {
     state.dialogsPage.messages.push(
         {id: 3, message: newMessage}
     )
+    state.dialogsPage.newMessageTXT = '';
     rerenderEntireTree(state);
 }
+export let addNewMessageTXT = (newMessageTXT) => {
+    state.dialogsPage.newMessageTXT = newMessageTXT;
+    rerenderEntireTree(state);
+}
+
 export default state;
