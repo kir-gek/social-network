@@ -43,47 +43,52 @@ let store = {
             ]
         }
     },
-
-    getState() {
-        return this._state;
-    },
-
     _callSubscriber() {
         // Локальная функция в которую приходит функция перерендера из индекса при вызове subscribe()
         console.log('state changed');
-    },
-
-    addPost() {
-        this._state.profilePage.posts.push(
-            {id: 5, message: this._state.profilePage.newPostText, likeCount: 0}
-        );
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-
-    addNewPostTXT(newPostTXT) {
-        this._state.profilePage.newPostText = newPostTXT;
-        this._callSubscriber(this._state);
-    },
-
-    addMessage() {
-        this._state.dialogsPage.messages.push(
-            {id: 3, message: this._state.dialogsPage.newMessageTXT}
-        )
-        this._state.dialogsPage.newMessageTXT = '';
-        this._callSubscriber(this._state);
-    },
-
-    addNewMessageTXT(newMessageTXT) {
-        this._state.dialogsPage.newMessageTXT = newMessageTXT;
-        this._callSubscriber(this._state);
     },
 
     subscribe  (observer)  {
         // subscribe необходима для получения рендера дерева из index.
         // Когда приходит функция рендера из индекса, _callSubscriber() приравнивается к полученной функции из index
         this._callSubscriber = observer.bind(this);
+    },
+    getState() {
+        return this._state;
+    },
+
+    dispatch(action) {
+
+        switch(action.type) {
+            case 'ADD-POST':  // if (x === 'value1') addPost
+                this._state.profilePage.posts.push(
+                    {id: 5, message: this._state.profilePage.newPostText, likeCount: 0}
+                );
+                this._state.profilePage.newPostText = '';
+                this._callSubscriber(this._state);
+                break;
+
+            case 'ADD-NEW-POST-TXT':  // if (x === 'value2') addNewPostTXT(newPostTXT)
+                this._state.profilePage.newPostText = action.newPostTXT; // !!!!
+                this._callSubscriber(this._state);
+                break;
+            case 'ADD-MESSAGE': // addMessage()
+                this._state.dialogsPage.messages.push(
+                    {id: 3, message: this._state.dialogsPage.newMessageTXT}
+                )
+                this._state.dialogsPage.newMessageTXT = '';
+                this._callSubscriber(this._state);
+                break;
+            case 'ADD-MESSAGE-TXT': //addNewMessageTXT(newMessageTXT)
+                this._state.dialogsPage.newMessageTXT = action.newMessageTXT;
+                this._callSubscriber(this._state);
+                break;
+        }
+
+
+
     }
+
 }
 window.store = store
 

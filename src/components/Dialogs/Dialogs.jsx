@@ -11,11 +11,14 @@ const Dialogs = (props) => {
 
     let newMessage = React.createRef()
     let sendMessage = () => {
-        props.addMessage();
+        // props.addMessage();
+        props.dispatch({type: 'ADD-MESSAGE'})
     }
 
     let addNewMessageTXTUI = () =>{
-        props.addNewMessageTXT(newMessage.current.value)
+        // props.addNewMessageTXT(newMessage.current.value)
+        let action = {type: 'ADD-MESSAGE-TXT', newMessageTXT:newMessage.current.value };
+        props.dispatch(action)
     }
 
     return (

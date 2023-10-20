@@ -9,11 +9,11 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
     let addPost = () => {
         // alert(newPostElement.current.value);
-        props.addPost()
+        props.dispatch({type:'ADD-POST'})
     }
 
     let addNewPostText =() =>{
-        props.addNewPostTXT (newPostElement.current.value)
+        props.dispatch({type : 'ADD-NEW-POST-TXT', newPostTXT : newPostElement.current.value })
     }
 
     return (
