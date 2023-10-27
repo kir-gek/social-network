@@ -2,6 +2,7 @@ import React from "react";
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {addNewMessageTXTUIActionCreator, sendMessageActionCreator} from "../../Redux/state";
 
 const SelectedDialog = ({isActive}) => isActive ? s.active : s.dialog;
 
@@ -12,12 +13,13 @@ const Dialogs = (props) => {
     let newMessage = React.createRef()
     let sendMessage = () => {
         // props.addMessage();
-        props.dispatch({type: 'ADD-MESSAGE'})
+        props.dispatch(sendMessageActionCreator())
     }
 
-    let addNewMessageTXTUI = () =>{
+    let addNewMessageTXTUI = () => {
         // props.addNewMessageTXT(newMessage.current.value)
-        let action = {type: 'ADD-MESSAGE-TXT', newMessageTXT:newMessage.current.value };
+        let text = newMessage.current.value
+        let action = addNewMessageTXTUIActionCreator(text);
         props.dispatch(action)
     }
 

@@ -1,3 +1,9 @@
+const ADD_POST = 'ADD-POST';
+const ADD_NEW_POST_TXT = 'ADD-NEW-POST-TXT';
+const ADD_MESSAGE_TXT = 'ADD-MESSAGE-TXT';
+const ADD_MESSAGE = 'ADD-MESSAGE';
+
+
 let store = {
     _state: {
         dialogsPage: {
@@ -36,8 +42,8 @@ let store = {
                 },
                 {
                     id: 2,
-                    imgURL: "https://png.pngtree.com/png-clipart/20230625/original/pngtree-cute-profile-pictures-png-image_9220720.png",
-                    name: 'Masha'
+                    imgURL: "https://sun9-59.userapi.com/impg/bA7IWNkRFev5QuLYyEYjg63pJmqDDfJBEsI2QQ/B3c-RuqwDvw.jpg?size=1620x2160&quality=95&sign=d228f845142ebd02df5abc21d63fe7df&type=album",
+                    name: 'Ekaterina'
                 },
                 {id: 3, imgURL: "https://cdn.freelance.ru/images/att/1324133_900_600.png", name: 'Marina'}
             ]
@@ -48,7 +54,7 @@ let store = {
         console.log('state changed');
     },
 
-    subscribe  (observer)  {
+    subscribe(observer) {
         // subscribe необходима для получения рендера дерева из index.
         // Когда приходит функция рендера из индекса, _callSubscriber() приравнивается к полученной функции из index
         this._callSubscriber = observer.bind(this);
@@ -59,7 +65,7 @@ let store = {
 
     dispatch(action) {
 
-        switch(action.type) {
+        switch (action.type) {
             case 'ADD-POST':  // if (x === 'value1') addPost
                 this._state.profilePage.posts.push(
                     {id: 5, message: this._state.profilePage.newPostText, likeCount: 0}
@@ -86,11 +92,13 @@ let store = {
         }
 
 
-
     }
 
 }
 window.store = store
 
-
+export const addPostActionCreator = () => ({type: ADD_POST}); //КОГДА ОБЕРНУЛИ В КРУГЛЫЕ СКОБОЧКИ ТО ЗНАЧИТ ЧТО ВОЗВРАЩАЕМ ОБЪЕКТ
+export const addNewPostTextActionCreator = (text) => ({type: ADD_NEW_POST_TXT, newPostTXT: text})
+export const sendMessageActionCreator = () => ({type: ADD_MESSAGE})
+export const addNewMessageTXTUIActionCreator = (text) => ({type: ADD_MESSAGE_TXT, newMessageTXT: text})
 export default store;
