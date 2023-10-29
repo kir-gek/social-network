@@ -10,15 +10,15 @@ const Dialogs = (props) => {
     let dialogsElements = props.state.dialogs.map(d => (<DialogItem name={d.name} id={d.id}/>));
     let messagesElements = props.state.messages.map(m => (<Message message={m.message}/>));
 
-    let newMessage = React.createRef()
+    // let newMessage = React.createRef() // ВМесто рефа будем использовать event.target
     let sendMessage = () => {
         // props.addMessage();
         props.dispatch(sendMessageActionCreator())
     }
 
-    let addNewMessageTXTUI = () => {
+    let addNewMessageTXTUI = (event) => { //объект event доступен внутри Колбэк функции
         // props.addNewMessageTXT(newMessage.current.value)
-        let text = newMessage.current.value
+        let text = event.target.value
         let action = addNewMessageTXTUIActionCreator(text);
         props.dispatch(action)
     }
@@ -31,7 +31,7 @@ const Dialogs = (props) => {
             <div className={s.messages}>
                 {messagesElements}
             </div>
-            <textarea ref={newMessage} value={props.state.newMessageTXT} onChange={addNewMessageTXTUI}></textarea>
+            <textarea value={props.state.newMessageTXT} onChange={addNewMessageTXTUI}></textarea>
             <button onClick={sendMessage}>Отправить сообщение</button>
         </div>
     );
