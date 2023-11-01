@@ -1,8 +1,6 @@
-const ADD_POST = 'ADD-POST';
-const ADD_NEW_POST_TXT = 'ADD-NEW-POST-TXT';
-const ADD_MESSAGE_TXT = 'ADD-MESSAGE-TXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import navbarReducer from "./navbar-reducer";
 
 let store = {
     _state: {
@@ -65,40 +63,15 @@ let store = {
 
     dispatch(action) {
 
-        switch (action.type) {
-            case 'ADD-POST':  // if (x === 'value1') addPost
-                this._state.profilePage.posts.push(
-                    {id: 5, message: this._state.profilePage.newPostText, likeCount: 0}
-                );
-                this._state.profilePage.newPostText = '';
-                this._callSubscriber(this._state);
-                break;
-
-            case 'ADD-NEW-POST-TXT':  // if (x === 'value2') addNewPostTXT(newPostTXT)
-                this._state.profilePage.newPostText = action.newPostTXT; // !!!!
-                this._callSubscriber(this._state);
-                break;
-            case 'ADD-MESSAGE': // addMessage()
-                this._state.dialogsPage.messages.push(
-                    {id: 3, message: this._state.dialogsPage.newMessageTXT}
-                )
-                this._state.dialogsPage.newMessageTXT = '';
-                this._callSubscriber(this._state);
-                break;
-            case 'ADD-MESSAGE-TXT': //addNewMessageTXT(newMessageTXT)
-                this._state.dialogsPage.newMessageTXT = action.newMessageTXT;
-                this._callSubscriber(this._state);
-                break;
-        }
-
-
+        this._state.profilePage = profileReducer(this._state.profilePage,action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage,action);
+        this._state.navBar = navbarReducer(this._state.navBar,action);
+        this._callSubscriber(this._state);
     }
 
 }
 window.store = store
 
-export const addPostActionCreator = () => ({type: ADD_POST}); //КОГДА ОБЕРНУЛИ В КРУГЛЫЕ СКОБОЧКИ ТО ЗНАЧИТ ЧТО ВОЗВРАЩАЕМ ОБЪЕКТ
-export const addNewPostTextActionCreator = (text) => ({type: ADD_NEW_POST_TXT, newPostTXT: text})
-export const sendMessageActionCreator = () => ({type: ADD_MESSAGE})
-export const addNewMessageTXTUIActionCreator = (text) => ({type: ADD_MESSAGE_TXT, newMessageTXT: text})
+
+
 export default store;

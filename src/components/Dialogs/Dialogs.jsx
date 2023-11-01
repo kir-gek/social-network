@@ -2,7 +2,7 @@ import React from "react";
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {addNewMessageTXTUIActionCreator, sendMessageActionCreator} from "../../Redux/state";
+import {addNewMessageTXTUIActionCreator, sendMessageActionCreator} from "../../Redux/dialogs-reducer";
 
 const SelectedDialog = ({isActive}) => isActive ? s.active : s.dialog;
 
