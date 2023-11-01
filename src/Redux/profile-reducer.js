@@ -1,7 +1,17 @@
 const ADD_POST = 'ADD-POST';
 const ADD_NEW_POST_TXT = 'ADD-NEW-POST-TXT';
 
-const profileReducer = (state, action) => {
+let initialState = {
+    posts: [
+        {id: 1, message: 'Hey, how are you?', likeCount: 2},
+        {id: 2, message: "It's my first post", likeCount: 13},
+        {id: 3, message: "It's my first post", likeCount: 13},
+        {id: 4, message: "It's my first post", likeCount: 13}
+    ],
+    // Текст в форме для нового поста
+    newPostText: 'PP'
+}
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
             state.posts.push(
