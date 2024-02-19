@@ -2,7 +2,6 @@ import React from "react";
 import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {addNewMessageTXTUIActionCreator, sendMessageActionCreator} from "../../Redux/dialogs-reducer";
 
 const SelectedDialog = ({isActive}) => isActive ? s.active : s.dialog;
 
@@ -12,19 +11,18 @@ const Dialogs = (props) => {
 
     // let newMessage = React.createRef() // ВМесто рефа будем использовать event.target
     let sendMessage = () => {
-        // props.addMessage();
-        props.dispatch(sendMessageActionCreator())
+        props.addMessage();
     }
 
     let addNewMessageTXTUI = (event) => { //объект event доступен внутри Колбэк функции
-        // props.addNewMessageTXT(newMessage.current.value)
         let text = event.target.value
-        let action = addNewMessageTXTUIActionCreator(text);
-        props.dispatch(action)
+        props.addNewMessageTXT(text)
+
+       
     }
 
     return (
-        <div className={s.dialogs}>
+        <div className={s.dialogs}> 
             <div className={s.dialogsItems}>
                 {dialogsElements}
             </div>
