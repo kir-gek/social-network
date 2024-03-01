@@ -6,8 +6,8 @@ import Message from "./Message/Message";
 const SelectedDialog = ({isActive}) => isActive ? s.active : s.dialog;
 
 const Dialogs = (props) => {
-    let dialogsElements = props.state.dialogs.map(d => (<DialogItem name={d.name} id={d.id}/>));
-    let messagesElements = props.state.messages.map(m => (<Message message={m.message}/>));
+    let dialogsElements = props.state.dialogs.map(d => (<DialogItem name={d.name} key={d.id}id={d.id}/>));
+    let messagesElements = props.state.messages.map(m => (<Message message={m.message} key={m.id}/>));
 
     // let newMessage = React.createRef() // ВМесто рефа будем использовать event.target
     let sendMessage = () => {
@@ -16,9 +16,7 @@ const Dialogs = (props) => {
 
     let addNewMessageTXTUI = (event) => { //объект event доступен внутри Колбэк функции
         let text = event.target.value
-        props.addNewMessageTXT(text)
-
-       
+        props.addNewMessageTXT(text)       
     }
 
     return (
