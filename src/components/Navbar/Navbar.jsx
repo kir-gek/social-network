@@ -1,6 +1,6 @@
 import s from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import Friends from "./Friends/Friends";
+import FriendsContainer from './Friends/FriendsContainer';
 
 const SelectedLink = ({isActive}) => isActive ? s.activeLink : s.item;
 // Она имеет класс activeLink если isActive, иначе класс item
@@ -24,7 +24,7 @@ const Navbar = (props) => {
                 <NavLink to="/settings" className={SelectedLink}>Settings</NavLink>
             </div>
             <div><h2>Friends</h2>
-                <Friends friendItem={props.state.friends}/>
+            <FriendsContainer />
             </div>
         </nav>
     )
