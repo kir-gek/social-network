@@ -23,3 +23,8 @@ background-color: aqua;
 .buttonUNFollow{
     background-color: red;
 }
+
+.selectedPage{
+    font-weight: bold;
+    color: red;
+}
