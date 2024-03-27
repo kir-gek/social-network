@@ -1,12 +1,14 @@
 import s from './ProfileInfo.module.css';
 import profile from "../Profile";
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  
     return (
         <div>
-            <img className={s.profileBack} src='https://yahont-hotel.ru/ckeditor_images/maxresdefault.jpg'/>
+            <img className={s.profileBack} src='https://yahont-hotel.ru/ckeditor_images/maxresdefault.jpg' />
             <div className={s.description}>
-                Ava + description
+                <img src={props.imgProfile} />
+                Обо мне {props.description}
             </div>
         </div>
     );

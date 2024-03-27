@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const ADD_NEW_POST_TXT = 'ADD-NEW-POST-TXT';
+const SET_PROFILE = 'SET-PROFILE'
 
 let initialState = {
     posts: [
@@ -9,7 +10,8 @@ let initialState = {
         { id: 4, message: "It's my first post", likeCount: 13 }
     ],
     // Текст в форме для нового поста
-    newPostText: 'PP'
+    newPostText: 'PP',
+    profile: null
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -25,10 +27,16 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 newPostText: action.newPostTXT
             };
+        case SET_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            };
         default:
             return state;
     }
 }
 export const addPost = () => ({ type: ADD_POST }); //КОГДА ОБЕРНУЛИ В КРУГЛЫЕ СКОБОЧКИ ТО ЗНАЧИТ ЧТО ВОЗВРАЩАЕМ ОБЪЕКТ
 export const addNewPostText = (text) => ({ type: ADD_NEW_POST_TXT, newPostTXT: text })
+export const setProfile = (profile) =>({type: SET_PROFILE, profile})
 export default profileReducer;
