@@ -29,6 +29,6 @@ const profileReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const addPostActionCreator = () => ({ type: ADD_POST }); //КОГДА ОБЕРНУЛИ В КРУГЛЫЕ СКОБОЧКИ ТО ЗНАЧИТ ЧТО ВОЗВРАЩАЕМ ОБЪЕКТ
-export const addNewPostTextActionCreator = (text) => ({ type: ADD_NEW_POST_TXT, newPostTXT: text })
+export const addPost = () => ({ type: ADD_POST }); //КОГДА ОБЕРНУЛИ В КРУГЛЫЕ СКОБОЧКИ ТО ЗНАЧИТ ЧТО ВОЗВРАЩАЕМ ОБЪЕКТ
+export const addNewPostText = (text) => ({ type: ADD_NEW_POST_TXT, newPostTXT: text })
 export default profileReducer;
