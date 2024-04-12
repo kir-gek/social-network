@@ -21,7 +21,7 @@ export const Users = (props) => {
 
             {props.users.map(el => (
                 <div className={s.wrapper}>
-                    <NavLink to='/profile'>
+                    <NavLink to={'/profile/'+el.id}>
                         <img src={(el.photos.small === null) ? userPhoto : el.photos.small} />
                     </NavLink>
                     {el.follow ? <button onClick={() => { props.unfollow(el.id) }} className={s.buttonUNFollow}>Unfollow</button>
