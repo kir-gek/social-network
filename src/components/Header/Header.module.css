@@ -6,3 +6,9 @@
 .header img {
     width: 20px;
 }
+
+.loginBlock{
+    float: right;
+    color: red;
+    background-color:antiquewhite;
+}
