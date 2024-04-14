@@ -2,9 +2,8 @@ import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import { setProfile } from "../../Redux/profile-reducer";
-import axios from "axios";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-
+import { ProfileApi } from "../../api/api";
 
 // // wrapper to use react router's v6 hooks in class component(to use HOC pattern, like in router v5)
 // function withRouter(Component) {
@@ -17,26 +16,21 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 //   return ComponentWithRouterProp;
 // }
 
-
-
-export function withRouter(Children){
-     return(props)=>{
-
-        const match  = {params: useParams()};
-        return <Children {...props}  match = {match}/>
-    }
-  }
-
+export function withRouter(Children) {
+  return (props) => {
+    const match = { params: useParams() };
+    return <Children {...props} match={match} />;
+  };
+}
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    let userId = this.props.match.params.userId
-    if (!userId) userId =2
-    axios
-      .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-      .then((response) => {
-        this.props.setProfile(response.data);
-      });
+    let userId = this.props.match.params.userId;
+    if (!userId) userId = 2;
+    ProfileApi.getProfile(userId)
+    .then((data) => {
+      this.props.setProfile(data);
+    });
   }
 
   render() {
@@ -50,6 +44,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-
-const WhitsUrlContainerComponent = withRouter(ProfileContainer)
-export default connect(mapStateToProps, { setProfile })(WhitsUrlContainerComponent);
+const WhitsUrlContainerComponent = withRouter(ProfileContainer);
+export default connect(mapStateToProps, { setProfile })(
+  WhitsUrlContainerComponent
+);
