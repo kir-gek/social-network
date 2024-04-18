@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toggleFollowingProgress } from "../Redux/users-reducer";
 
 const instance = axios.create({
   withCredentials: true,

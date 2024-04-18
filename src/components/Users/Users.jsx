@@ -34,9 +34,12 @@ export const Users = (props) => {
           </NavLink>
           {el.followed ? (
             <button
+              disabled={props.followInProgress.some ((followEl) => followEl == el.id )}
               onClick={() => {
+                props.toggleFollowingProgress(true, el.id);
                 FollowApi.unfollow(el.id).then((data) => {
                   if (data.resultCode === 0) props.unfollow(el.id);
+                  props.toggleFollowingProgress(false, el.id);
                 });
               }}
               className={s.buttonUNFollow}
@@ -45,9 +48,12 @@ export const Users = (props) => {
             </button>
           ) : (
             <button
-              onClick={() => {
+            disabled={props.followInProgress.some ((followEl) => followEl == el.id )}
+            onClick={() => {
+                props.toggleFollowingProgress(true, el.id);
                 FollowApi.follow(el.id).then((data) => {
                   if (data.resultCode === 0) props.follow(el.id);
+                  props.toggleFollowingProgress(false, el.id);
                 });
               }}
               className={s.buttonFollow}
